@@ -1,0 +1,4 @@
+content seleniumext chrome/content/
+
+overlay chrome://selenium-ide/content/selenium-ide-common.xul   chrome://seleniumext/content/SeleniumIDEOverlay.xul
+overlay chrome://selenium-ide/content/selenium-ide-overlay.xul chrome://seleniumext/content/extensions/extension-loader.xul
