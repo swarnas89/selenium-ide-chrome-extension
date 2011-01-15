@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<project name="seleniumext" default="createDistributionXPI">
+
+	<!-- Project directories -->
+	<property name="src_dir" location="./src" />
+	<property name="build_dir" location="./build" />
+	<property name="dist_dir" location="./dist" />
+	<property name="backup_dir" location="../backup" />
+	<property name="version" value="1.0"/>
+	<property name="version_file_name" value="${ant.project.name}_${version}.xpi"/>
+	<property name="standard_profile_dir" value="C:\Dokumente und Einstellungen\Rudolf\Anwendungsdaten\Mozilla\Firefox\Profiles\c3clocq0.Standard"/>
+	<property name="standard_extension_dir" value="${standard_profile_dir}\extensions"></property>
+	<property name="seleniumext_gui_id" value="selenium-ide-extension@mouseless.de"></property>
+
+	<taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" name="gcupload"/>
+	<target name="createDailyBuild"></target>
+	<target name="createDistributionXPI">
+		<delete dir="${dist_dir}"/>
+		<mkdir dir="${dist_dir}"/>
+		<zip destfile="${dist_dir}/${version_file_name}" update="true" basedir="${src_dir}"/>
+		<!-- Make backup-copy -->
+		<copy todir="${backup_dir}/src">
+			<fileset dir="${src_dir}"/>
+		</copy>
+	</target>
+	<target name="ftpToHomepage">
+		<ftp server="wp1067403.wp026.webpack.hosteurope.de"
+	       remotedir="www/joomla/resources"
+	       userid="ftp1067403-rudolfnoe"
+	       password="bikefahrn"
+	       depends="yes">
+			<fileset dir="${dist_dir}">
+				<include name="*.xpi"/>
+			</fileset>
+		</ftp>
+	</target>
+	<target name="googleUpload">
+		<gcupload username="Rudolf.Noe" password="KQ3pG9uu6cS7" projectname="customizeyourweb" filename="${dist_dir}/${version_file_name}" 
+			targetfilename="${version_file_name}" 
+			summary="Version ${version}" 
+			labels="Type-Installer, OpSys-All" />
+	</target>
+</project>

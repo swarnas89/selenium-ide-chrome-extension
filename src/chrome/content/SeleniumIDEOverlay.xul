@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<overlay id="selenium-ide-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+   <script type="application/x-javascript" src="chrome://seleniumext/content/EditorOverlay.js"/>
+   
+   <commandset id="seleniumIDECommands">
+      <command id="cmd_insert" oncommand="goDoCommand('cmd_insert')"/>      
+      <command id="cmd_insert_by_enter" oncommand="goDoCommand('cmd_insert_by_enter')"/>      
+   </commandset>
+   
+   <keyset id="seleniumIDEKeys">
+      <key id="insert-key" keycode="VK_INSERT" command="cmd_insert"/>
+      <key id="insert-by-enter-key" keycode="VK_RETURN" command="cmd_insert_by_enter"/>
+      <key id="focus-table-key" keycode="VK_F12" oncommand="goDoCommand('cmd_focus_table')"/>
+      <key id="move-up-key" modifiers="alt" keycode="VK_UP" oncommand="goDoCommand('cmd_move_up')"/>
+      <key id="move-up-key" modifiers="alt" keycode="VK_DOWN" oncommand="goDoCommand('cmd_move_down')"/>
+      <key id="play-key"  keycode="VK_F6" oncommand="goDoCommand('cmd_selenium_play')"/>
+   </keyset>
+   
+</overlay>
