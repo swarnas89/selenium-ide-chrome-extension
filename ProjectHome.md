@@ -1,0 +1,2 @@
+Selenium IDE Chrome Extension is a Firefox Addon extending the functionality of the Selenium IDE to allow automatic testing of Chrome / XUL Code.
+For more information about Selenium IDE see http://seleniumhq.org.
